@@ -1,8 +1,8 @@
-import FirstName from "../../value_objects/FirstName/FirstName";
-import LastName from "../../value_objects/LastName/LastName";
-import Email from "../../value_objects/email/Email";
-import Password from "../../value_objects/password/Password";
-import Identifier from "../../value_objects/Identifier/Identifier";
+import FirstName from "../../valueObjects/FirstName/FirstName";
+import LastName from "../../valueObjects/LastName/LastName";
+import Email from "../../valueObjects/email/Email";
+import Password from "../../valueObjects/password/Password";
+import Identifier from "../../valueObjects/Identifier/Identifier";
 
 /**
  * Entity representing a User in the domain.
