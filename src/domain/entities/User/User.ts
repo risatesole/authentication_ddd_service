@@ -3,15 +3,20 @@ import LastName from "../../valueObjects/LastName/LastName";
 import Email from "../../valueObjects/email/Email";
 import Password from "../../valueObjects/password/Password";
 import Identifier from "../../valueObjects/Identifier/Identifier";
+import DateTime from "../../valueObjects/datetime/DateTime";
 
 /**
  * Entity representing a User in the domain.
  *
- * A User is defined by a unique Identifier and contains
- * validated value objects for its properties.
+ * A User is defined by:
+ * - a unique Identifier
+ * - validated value objects (name, email, password)
+ * - lifecycle metadata (createdAt)
  */
 class User {
   private readonly identifier: Identifier;
+  private readonly createdAt: DateTime;
+
   private firstName: FirstName;
   private lastName: LastName;
   private email: Email;
@@ -22,17 +27,23 @@ class User {
     firstName: FirstName,
     lastName: LastName,
     email: Email,
-    password: Password
+    password: Password,
+    createdAt: DateTime 
   ) {
     this.identifier = identifier;
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.password = password;
+    this.createdAt = createdAt ?? DateTime.now();
   }
 
   getIdentifier(): Identifier {
     return this.identifier;
+  }
+
+  getCreatedAt(): DateTime {
+    return this.createdAt;
   }
 
   getFirstName(): FirstName {
@@ -66,6 +77,25 @@ class User {
 
   equals(user: User): boolean {
     return this.identifier.equals(user.getIdentifier());
+  }
+
+  /**
+   * Factory method for creating a new User
+   */
+  static create(
+    firstName: FirstName,
+    lastName: LastName,
+    email: Email,
+    password: Password
+  ): User {
+    return new User(
+      new Identifier(),
+      firstName,
+      lastName,
+      email,
+      password,
+      DateTime.now()
+    );
   }
 }
 
