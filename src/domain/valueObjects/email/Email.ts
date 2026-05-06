@@ -1,5 +1,5 @@
 import EmailErrors from "./errors/EmailErrors";
-
+import type { EmailInterface } from "./interfaces/EmailInterface";
 /**
  * Value Object that represents a validated email address.
  *
@@ -10,7 +10,7 @@ import EmailErrors from "./errors/EmailErrors";
  *
  * If the email is invalid, an EmailError is thrown.
  */
-class Email {
+class Email implements EmailInterface{
   /**
    * Internal normalized email value.
    */
