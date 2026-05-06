@@ -4,3 +4,4 @@ class Password {
     this.password = password;
   }
 }
+export default Password;

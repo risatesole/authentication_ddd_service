@@ -4,3 +4,4 @@ class Email {
     this.email = email;
   }
 }
+export default Email;

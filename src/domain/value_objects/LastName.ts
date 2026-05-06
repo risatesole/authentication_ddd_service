@@ -4,3 +4,4 @@ class LastName {
     this.LastName = LastName;
   }
 }
+export default LastName;
