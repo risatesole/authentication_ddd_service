@@ -11,34 +11,34 @@ test("Password - rejects weak password", () => {
 test("Password - creates hashed password from strong input", () => {
   const password = Password.create(strongPassword);
 
-  expect(password.value()).toBeDefined();
-  expect(password.value()).not.toBe(strongPassword);
+  expect(password.getValue()).toBeDefined();
+  expect(password.getValue()).not.toBe(strongPassword);
 });
 
 test("Password - fromHash restores object correctly", () => {
   const password = Password.create(strongPassword);
-  const hash = password.value();
+  const hash = password.getValue();
 
   const restored = Password.fromHash(hash);
 
-  expect(restored.value()).toBe(hash);
+  expect(restored.getValue()).toBe(hash);
 });
 
 test("Password - verify returns true for correct password", () => {
   const password = Password.create(strongPassword);
 
-  expect(Password.verify(strongPassword, password.value())).toBe(true);
+  expect(Password.verify(strongPassword, password.getValue())).toBe(true);
 });
 
 test("Password - verify returns false for wrong password", () => {
   const password = Password.create(strongPassword);
 
-  expect(Password.verify("Wrong@123", password.value())).toBe(false);
+  expect(Password.verify("Wrong@123", password.getValue())).toBe(false);
 });
 
 test("Password - value is always a non-empty string", () => {
   const password = Password.create(strongPassword);
 
-  expect(typeof password.value()).toBe("string");
-  expect(password.value().length).toBeGreaterThan(0);
+  expect(typeof password.getValue()).toBe("string");
+  expect(password.getValue().length).toBeGreaterThan(0);
 });

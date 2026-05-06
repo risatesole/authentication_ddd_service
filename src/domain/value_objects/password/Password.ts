@@ -64,7 +64,7 @@ class Password {
    *
    * @returns bcrypt hashed password string
    */
-  value(): string {
+  getValue(): string {
     return this.hashed;
   }
 
