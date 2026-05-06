@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
     // Environment setup & latest features
-    "lib": ["ESNext"],
+    // "lib": ["ESNext"],
+    "lib": ["ES2022", "DOM"],
     "target": "ESNext",
     "module": "Preserve",
     "moduleDetection": "force",
     "jsx": "react-jsx",
     "allowJs": true,
+
+    "types": ["bun"],
 
     // Bundler mode
     "moduleResolution": "bundler",
