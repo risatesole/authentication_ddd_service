@@ -1,70 +1,38 @@
-/**
- * Value Object representing a point in time.
- *
- * Ensures:
- * - Immutable date handling
- * - Safe comparisons
- * - Controlled creation
- */
-class DateTime {
+import type { DateTimeInterface } from "./interfaces/DateTimeInterface";
+
+class DateTime implements DateTimeInterface {
   private readonly value: Date;
 
-  /**
-   * Creates a DateTime instance.
-   *
-   * @param date - JavaScript Date object
-   */
   private constructor(date: Date) {
-    this.value = new Date(date.getTime()); // ensure immutability
+    this.value = new Date(date.getTime());
   }
 
-  /**
-   * Creates a DateTime from current time.
-   */
   static now(): DateTime {
     return new DateTime(new Date());
   }
 
-  /**
-   * Creates a DateTime from a JS Date.
-   */
   static from(date: Date): DateTime {
     return new DateTime(date);
   }
 
-  /**
-   * Returns underlying Date (copy)
-   */
-  toDate(): Date {
+  toDateTime(): Date {
     return new Date(this.value.getTime());
   }
 
-  /**
-   * Adds milliseconds
-   */
   addMilliseconds(ms: number): DateTime {
     return new DateTime(new Date(this.value.getTime() + ms));
   }
 
-  /**
-   * Checks if this is before another DateTime
-   */
-  isBefore(other: DateTime): boolean {
-    return this.value.getTime() < other.value.getTime();
+  isBefore(other: DateTimeInterface): boolean {
+    return this.value.getTime() < other.toDateTime().getTime();
   }
 
-  /**
-   * Checks if this is after another DateTime
-   */
-  isAfter(other: DateTime): boolean {
-    return this.value.getTime() > other.value.getTime();
+  isAfter(other: DateTimeInterface): boolean {
+    return this.value.getTime() > other.toDateTime().getTime();
   }
 
-  /**
-   * Equality check
-   */
-  equals(other: DateTime): boolean {
-    return this.value.getTime() === other.value.getTime();
+  equals(other: DateTimeInterface): boolean {
+    return this.value.getTime() === other.toDateTime().getTime();
   }
 }
 
