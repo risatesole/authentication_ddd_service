@@ -1,6 +1,6 @@
 class Email {
-    email:string = "";
-    constructor(email:string){
-    this.email = email;            
-    }
+  email: string = "";
+  constructor(email: string) {
+    this.email = email;
+  }
 }
